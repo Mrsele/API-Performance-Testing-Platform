@@ -1,0 +1,23 @@
+:root { font-family: system-ui, sans-serif; color: #1a1d23; background: #f5f6f8; }
+body { margin: 0; }
+header { padding: 12px 20px; background: #14213d; color: #fff; font-weight: 600; }
+.layout { display: grid; grid-template-columns: 280px 1fr; gap: 16px; padding: 16px; }
+.card { background: #fff; border: 1px solid #dde1e7; border-radius: 8px; padding: 12px 14px; margin-bottom: 14px; }
+h3 { margin: 0 0 8px; font-size: 14px; text-transform: uppercase; letter-spacing: .04em; color: #555; }
+input, select, textarea, button { font: inherit; padding: 6px 8px; border: 1px solid #c5cbd3; border-radius: 6px; }
+textarea { width: 100%; box-sizing: border-box; font-family: ui-monospace, monospace; font-size: 12px; }
+button { background: #2b59c3; color: #fff; border: none; cursor: pointer; }
+button.secondary { background: #e7eaf0; color: #1a1d23; }
+button:disabled { opacity: .5; }
+.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 6px 0; }
+.list div { padding: 6px 8px; border-radius: 6px; cursor: pointer; }
+.list div.sel { background: #e3ebff; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid #eceff3; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; margin: 8px 0; }
+.stat { background: #f0f3f8; border-radius: 6px; padding: 8px; }
+.stat b { display: block; font-size: 18px; }
+.pass { color: #15803d; font-weight: 600; } .fail { color: #b91c1c; font-weight: 600; }
+.improved { color: #15803d; } .regressed { color: #b91c1c; } .unchanged { color: #6b7280; }
+pre { background: #0f172a; color: #e2e8f0; padding: 10px; border-radius: 6px; overflow: auto; font-size: 12px; max-height: 300px; }
+.msg { color: #b45309; margin-bottom: 8px; }

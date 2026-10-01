@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/perf}
+    username: ${DB_USER:perf}
+    password: ${DB_PASSWORD:perf}
+  jpa:
+    hibernate.ddl-auto: update   # scaffold only; switch to Flyway migrations before real use
+    open-in-view: false
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+perf:
+  k6-bin: ${K6_BIN:k6}
+  work-dir: ${WORK_DIR:/tmp/perf-runs}

@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: perf
+      POSTGRES_USER: perf
+      POSTGRES_PASSWORD: perf
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U perf -d perf"]
+      interval: 3s
+      retries: 20
+
+  backend:
+    build: ./backend
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/perf
+      DB_USER: perf
+      DB_PASSWORD: perf
+      WORK_DIR: /tmp/perf-runs
+    depends_on:
+      db: { condition: service_healthy }
+    ports: ["8080:8080"]
+    volumes: [runs:/tmp/perf-runs]
+
+  frontend:
+    build: ./frontend
+    environment:
+      API_TARGET: http://backend:8080
+    depends_on: [backend]
+    ports: ["5173:5173"]
+
+  # Demo system-under-test (httpbin clone). Use base URL http://demo-api:8080 in the UI.
+  demo-api:
+    image: mccutchen/go-httpbin
+    ports: ["8081:8080"]
+
+volumes:
+  pgdata:
+  runs:
